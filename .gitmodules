@@ -1,0 +1,8 @@
+[submodule "shoppinglist_query"]
+	path = shoppinglist_query
+	url = git@github.com:buyarella/shoppinglist_query.git
+	branch = develop
+[submodule "shoppinglist_command"]
+	path = shoppinglist_command
+	url = git@github.com:buyarella/shoppinglist_command.git
+	branch = develop

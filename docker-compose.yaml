@@ -1,0 +1,22 @@
+version: '2'
+services:
+  envoy:
+    image: envoyproxy/envoy-alpine
+    command: ["envoy", "-l","trace", "-c","/etc/envoy/envoy.yaml"]
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+    ports:
+      - "9090:9090"
+    links:
+      - shoppinglist_query
+      - shoppinglist_command
+
+  shoppinglist_query:
+    image: shoppinglist_query
+    expose:
+      - "1337"
+
+  shoppinglist_command:
+    image: shoppinglist_command
+    expose:
+      - "1337"
