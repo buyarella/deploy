@@ -15,6 +15,8 @@ services:
     image: shoppinglist_query
     expose:
       - "1337"
+    environment:
+     DB_CONNECTIONSTRING: host=postgres port=5432 user=postgres dbname=postgres password=postgres sslmode=disable
 
   shoppinglist_command:
     image: shoppinglist_command
@@ -52,7 +54,15 @@ services:
     depends_on:
       - zookeeper
 
+  postgres:
+    image: "postgres:11"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
 volumes:
   kafka:
   zookeeper_data:
   zookeeper_log:
+  postgres:
